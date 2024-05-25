@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+    nginx:
+        container_name: nginx_laravel
+        image: nginx:latest
+        ports:
+            - "8080:80"
+        volumes:
+            - ./www:/var/www/html
+            - ./utils/nginx/nginx.conf:/etc/nginx/nginx.conf
+        depends_on:
+            - php
+        networks:
+            - phpngix_net
+    php:
+        container_name: php_laravel
+        build:
+            context: .
+            dockerfile: ./utils/php/8.2/Dockerfile
+        volumes:
+            - ./www:/var/www/html
+        networks:
+            - phpngix_net
+
+    mysql:
+        container_name: mysql_laravel
+        image: mysql:8.0.23
+        command: --default-authentication-plugin=mysql_native_password  --sql-mode=""
+        volumes:
+            - "db_data:/var/lib/mysql"
+        ports:
+            - "3308:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=123456
+            - MYSQL_DATABASE=sisgf
+        networks:
+            - phpngix_net
+
+volumes:
+  db_data:
+
+networks:
+  phpngix_net:
+    driver: bridge
