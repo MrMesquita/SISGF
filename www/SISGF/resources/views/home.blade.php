@@ -1,1 +1,4 @@
-Home
+@extends('layout.header')
+@section('content')
+
+@endsection

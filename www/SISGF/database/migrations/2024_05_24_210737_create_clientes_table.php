@@ -15,15 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 30)->nullable(false);
             $table->string('email', 50)->nullable(false);
-            $table->integer('telefone_id');
             $table->double('documento')->nullable(false)->unique();
-            $table->string('password');
             $table->string('rua', 30);
             $table->string('bairro', 30);
             $table->string('cidade', 30);
             $table->integer('cep');
             $table->string('pais');
-            $table->string('complemento');
+            $table->string('complemento')->nullable(true);
             $table->timestamps();
             $table->softDeletes();
         });

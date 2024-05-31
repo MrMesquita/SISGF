@@ -12,7 +12,7 @@ class FarmaceuticoController extends Controller
      */
     public function index()
     {
-        //
+        return view('farmaceuticos');
     }
 
     /**
