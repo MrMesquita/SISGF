@@ -19,51 +19,74 @@ class FuncionarioController extends Controller
 
     public function index()
     {
-        return view('funcionarios.index', ['funcionarios' => $this->funcionarios->all()]);
+        return view('funcionarios.index', [
+            'funcionarios' => $this->funcionarios->all(),
+            'drogarias' => $this->drogarias->all(),
+        ]);
     }
 
-    public function create()
+    public function register()
     {
-        //
+        return view('funcionarios.core', 
+        [
+            'title' => 'Cadastro de funcionários', 
+            'subTitle' => 'Tela de cadastro de funcionários',
+            'method' => 'post',
+            'drogarias' => $this->drogarias->all(),
+            'drogaria_id' => null,
+            'action' => url('/funcionarios/create/')
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function create(Request $request)
     {
-        //
+        $request->validate($this->funcionarios->rules(), $this->funcionarios->feedback());
+
+        $this->funcionarios->create($request->all());
+        return redirect()->route('funcionarios.index')->with('sucesso','Funcionário cadastrado com sucesso');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Funcionario $funcionario)
+    public function show($id)
     {
-        //
+        $funcionario = $this->funcionarios->find($id);
+        $drogaria = $this->drogarias->find($funcionario->drogaria_id);
+
+        if($funcionario == null){
+            return redirect()->route('funcionarios.index')->with('erros','Funcionário não encontrado');
+        }
+        
+        return view('funcionarios.single', ['funcionario' => $funcionario, 'drogaria' => $drogaria->nome]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Funcionario $funcionario)
+    public function edit($id)
     {
-        //
+        $funcionario = $this->funcionarios->find($id);
+        return view('funcionarios.core', 
+        [
+            'title' => 'Editando funcionário', 
+            'subTitle' => 'Tela de edição de funcionário',
+            'method' => 'post',
+            'drogarias' => $this->drogarias->all(),
+            'drogaria_id' => $funcionario->drogaria_id,
+            'action' => url('/funcionarios/update/'), 
+            'funcionario' => $funcionario
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Funcionario $funcionario)
+    public function update(Request $request)
     {
-        //
+        $funcionario = $this->funcionarios->find($request->id);
+
+        $request->validate($this->funcionarios->rules(), $this->funcionarios->feedback());
+
+        $funcionario->update($request->all());
+        return redirect()->route('funcionarios.index')->with("sucesso", "Funcionário atualizado com sucesso");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Funcionario $funcionario)
+    public function delete($id)
     {
-        //
+        $funcionario = $this->funcionarios->find($id);
+        $funcionario->delete();
+        return redirect()->route('funcionarios.index')->with("sucesso", "Funcionário excluído com sucesso");
     }
 }

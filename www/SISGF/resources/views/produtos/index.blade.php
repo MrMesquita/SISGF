@@ -6,7 +6,7 @@
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                        <i class="ik ik-box bg-blue"></i>
+                        <i class="ik ik-package bg-blue"></i>
                         <div class="d-inline">
                             <h5>Produtos</h5>
                             <span>Listando todos os produtos do sistema</span>

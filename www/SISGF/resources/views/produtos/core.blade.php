@@ -6,7 +6,7 @@
             <div class="row align-items-end">
                 <div class="col-lg-6">
                     <div class="page-header-title">
-                        <i class="ik ik-box bg-blue"></i>
+                        <i class="ik ik-package bg-blue"></i>
                         <div class="d-inline">
                             <h5>{{$title}}</h5>
                             <span>{{$subTitle}}</span>
@@ -120,7 +120,7 @@
                             </div>
                             <input type="hidden" class="form-control" value="{{ $produto->id ?? null }}" name="id" id="id">
                             <button type="submit" class="btn btn-primary mr-2">Salvar</button>
-                            <a href="{{url("/clientes")}}" class="btn btn-light">Cancelar</a>
+                            <a href="{{url("/produtos")}}" class="btn btn-light">Cancelar</a>
                           </form>
                     </div>
                 </div>

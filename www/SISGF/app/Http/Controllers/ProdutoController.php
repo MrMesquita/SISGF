@@ -78,6 +78,7 @@ class ProdutoController extends Controller
             'produto' => $produto
         ]);
     }
+
     public function update(Request $request)
     {
         $produto = $this->produtos->find($request->id);
@@ -88,9 +89,6 @@ class ProdutoController extends Controller
         return redirect()->route('produtos.index')->with("sucesso", "Produto atualizado com sucesso");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function delete($id)
     {
         $produto = $this->produtos->find($id);

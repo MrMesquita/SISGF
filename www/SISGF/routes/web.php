@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,10 +25,10 @@ Route::get('/produtos/edit/{id}', [ProdutoController::class, 'edit'])->name('pro
 Route::post('/produtos/update', [ProdutoController::class, 'update'])->name('produtos.update');
 Route::get('/produtos/delete/{id}', [ProdutoController::class, 'delete'])->name('produtos.delete');
 
-Route::get('/funcionarios', [ProdutoController::class, 'index'])->name('funcionarios.index');
-Route::get('/funcionarios/register/', [ProdutoController::class, 'register'])->name('funcionarios.register');
-Route::get('/funcionarios/{id}', [ProdutoController::class, 'show'])->name('funcionarios.show');
-Route::post('/funcionarios/create', [ProdutoController::class, 'create'])->name('funcionarios.create');
-Route::get('/funcionarios/edit/{id}', [ProdutoController::class, 'edit'])->name('funcionarios.edit');
-Route::post('/funcionarios/update', [ProdutoController::class, 'update'])->name('funcionarios.update');
-Route::get('/funcionarios/delete/{id}', [ProdutoController::class, 'delete'])->name('funcionarios.delete');
+Route::get('/funcionarios', [FuncionarioController::class, 'index'])->name('funcionarios.index');
+Route::get('/funcionarios/register/', [FuncionarioController::class, 'register'])->name('funcionarios.register');
+Route::get('/funcionarios/{id}', [FuncionarioController::class, 'show'])->name('funcionarios.show');
+Route::post('/funcionarios/create', [FuncionarioController::class, 'create'])->name('funcionarios.create');
+Route::get('/funcionarios/edit/{id}', [FuncionarioController::class, 'edit'])->name('funcionarios.edit');
+Route::post('/funcionarios/update', [FuncionarioController::class, 'update'])->name('funcionarios.update');
+Route::get('/funcionarios/delete/{id}', [FuncionarioController::class, 'delete'])->name('funcionarios.delete');
