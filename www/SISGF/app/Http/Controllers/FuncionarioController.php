@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Drogaria;
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
 
 class FuncionarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private $funcionarios;
+    private $drogarias;
+
+    public function __construct()
     {
-        return view('funcionarios');
+        $this->funcionarios = new Funcionario();
+        $this->drogarias = new Drogaria();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function index()
+    {
+        return view('funcionarios.index', ['funcionarios' => $this->funcionarios->all()]);
+    }
+
     public function create()
     {
         //

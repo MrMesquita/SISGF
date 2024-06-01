@@ -28,7 +28,7 @@
                     <a href="/clientes"><i class="ik ik-users"></i><span>Clientes</span></a>
                 </div>
                 <div class="nav-item">
-                    <a href="/"><i class="ik ik-box"></i><span>Produtos</span></a>
+                    <a href="/produtos"><i class="ik ik-box"></i><span>Produtos</span></a>
                 </div>
                 <div class="nav-item">
                     <a href="/"><i class="ik ik-users"></i><span>Funcionários</span></a>

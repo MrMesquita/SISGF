@@ -31,7 +31,7 @@ class Cliente extends Model
             'bairro' => 'required|min:4|max:30',
             'cidade' => 'required|min:4|max:30',
             'cep' => 'required|min:8|max:8',
-            'pais' => 'required|min:5|max:30',
+            'pais' => 'required|min:2|max:30',
         ];
     }
 

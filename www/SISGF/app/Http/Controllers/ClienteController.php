@@ -32,13 +32,21 @@ class ClienteController extends Controller
         ]);
     }
 
+    public function create(Request $request)
+    {
+        $request->validate($this->clientes->rules(), $this->clientes->feedback());
+
+        $this->clientes->create($request->all());
+        return redirect()->route('clientes.index')->with('sucesso','Cliente cadastrado com sucesso');
+    }
+
     public function edit($id)
     {
         $cliente = $this->clientes->find($id);
         return view('clientes.core', 
         [
             'title' => 'Editando cliente', 
-            'method' => 'put',
+            'method' => 'post',
             'action' => url('/clientes/update/'), 
             'cliente' => $cliente
         ]);
@@ -47,13 +55,6 @@ class ClienteController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
-    {
-        $request->validate($this->clientes->rules(), $this->clientes->feedback());
-
-        $this->clientes->create($request->all());
-        return redirect()->route('clientes.index')->with('sucesso','Cliente cadastrado com sucesso');
-    }
 
     /**
      * Display the specified resource.
