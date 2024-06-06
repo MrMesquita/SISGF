@@ -23,7 +23,7 @@ class ProdutoController extends Controller
 
     public function index()
     {
-        return view('produtos.index', ['produtos' => $this->produtos->all()]);
+        return view('produtos.index', ['produtos' => $this->produtos->all(),'categorias'=>$this->categorias]);
     }
 
     public function register()

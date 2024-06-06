@@ -16,7 +16,7 @@
             </div>
             <span class="text">ThemeKit</span>
         </a>
-        <button type="button" class="nav-toggle"><i data-toggle="expanded"
+        <button type="button" class="nav-toggle" id="closeSideBar"><i data-toggle="expanded"
                 class="ik ik-toggle-right toggle-icon"></i></button>
         <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>
     </div>
@@ -27,8 +27,8 @@
                 <div class="nav-item {{ $actualController == "home" ? 'active' : null}}">
                     <a href="/"><i class="ik ik-home "></i><span>Home</span></a>
                 </div>
-                <div class="nav-item">
-                    <a href="/"><i class="ik ik-shopping-cart"></i><span>Caixa</span></a>
+                <div class="nav-item {{ $actualController == "caixa" ? 'active' : null}}">
+                    <a href="/caixa"><i class="ik ik-shopping-cart"></i><span>Caixa</span></a>
                 </div>
                 <div class="nav-item">
                     <a href="/"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>

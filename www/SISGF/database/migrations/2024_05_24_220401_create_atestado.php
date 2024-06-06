@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('atestados_clientes', function (Blueprint $table){
+        Schema::create('atestados', function (Blueprint $table){
             $table->id();
             $table->unsignedBigInteger('farmaceutico_id');
             $table->unsignedBigInteger('cliente_id');
@@ -20,9 +20,10 @@ return new class extends Migration
             $table->string('diagnostico', 30)->nullable(false);
             $table->text('descricao');
             $table->timestamps();
+            $table->softDeletes();
         });
 
-        Schema::table('atestados_clientes', function (Blueprint $table){
+        Schema::table('atestados', function (Blueprint $table){
             $table->foreign('farmaceutico_id')->references('id')->on('farmaceuticos');
             $table->foreign('cliente_id')->references('id')->on('clientes');
         });
@@ -33,6 +34,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('atestados_clientes');
+        Schema::table('atestados', function (Blueprint $table) {
+            $table->dropForeign('atestados_farmaceutico_id_foreign');
+            $table->dropForeign('atestados_cliente_id_foreign');
+        });
+        
+        Schema::dropIfExists('atestados');
     }
 };

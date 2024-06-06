@@ -15,7 +15,7 @@ class Funcionario extends Model
         return [
             'nome' => "required|min:3|max:40",
             'documento' => 'required|min:5|max:15',
-            'codigo' => 'required|min:5|max:30',
+            'codigo' => 'required|min:5|max:30|unique:funcionarios',
             'drogaria_id' => 'required'
         ];
     }
@@ -28,6 +28,7 @@ class Funcionario extends Model
             "codigo.numeric" => "O codigo deve ser apenas números",
             "codigo.min" => "O campo codigo não atingiu a quantidade minima: 5",
             "codigo.max" => "O campo codigo atingiu o limite de 30 digitos",
+            "codigo.unique" => "O código de funcionário já existe"
         ];
     }
 }

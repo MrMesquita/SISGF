@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome',30)->nullable(false);
             $table->string('documento')->nullable(false);
-            $table->integer('telefone')->default(000000000000);
+            $table->string('telefone')->default("(81)91234-5678");
             $table->unsignedBigInteger('codigo')->nullable(false)->unique();
             $table->unsignedBigInteger('CRF')->nullable(false)->unique();
             $table->unsignedBigInteger('drogaria_id')->nullable(false);

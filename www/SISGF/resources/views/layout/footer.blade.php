@@ -105,6 +105,15 @@
     </div>
 </div>
 
+<script>
+    if(window.location.href == '{{url('/caixa')}}'){
+        document.querySelector('.wrapper').classList.add('nav-collapsed','menu-collapse')
+        let icon = document.querySelector('sidebar-header #closeSideBar i')
+        icon.dataset.toggle = 'collapsed'
+        icon.classList.remove('ik-toggle-right')
+        icon.classList.add('ik-toggle-left')
+    }
+</script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     window.jQuery || document.write('<script src="src/js/vendor/jquery-3.3.1.min.js"><\/script>')

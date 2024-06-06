@@ -8,8 +8,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-users bg-blue"></i>
                         <div class="d-inline">
-                            <h5>Cadastro de cliente</h5>
-                            <span>Cadastrando no sistema</span>
+                            <h5>{{$title}}</h5>
+                            <span>{{$subTitle}}</span>
                         </div>
                     </div>
                 </div>

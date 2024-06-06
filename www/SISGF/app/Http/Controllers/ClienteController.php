@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\User;
 use Brick\Math\BigInteger;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,7 @@ class ClienteController extends Controller
         return view('clientes.core', 
         [
             'title' => 'Cadastro de cliente', 
+            'subTitle' => 'Cadastrando cliente no sistema',
             'method' => 'post',
             'action' => url('/clientes/create/')
         ]);
@@ -36,7 +38,7 @@ class ClienteController extends Controller
     {
         $request->validate($this->clientes->rules(), $this->clientes->feedback());
 
-        $this->clientes->create($request->all());
+        $cliente = $this->clientes->create($request->all());
         return redirect()->route('clientes.index')->with('sucesso','Cliente cadastrado com sucesso');
     }
 
@@ -46,6 +48,7 @@ class ClienteController extends Controller
         return view('clientes.core', 
         [
             'title' => 'Editando cliente', 
+            'subTitle' => 'Editando um cliente cadastrado no sistema',
             'method' => 'post',
             'action' => url('/clientes/update/'), 
             'cliente' => $cliente
